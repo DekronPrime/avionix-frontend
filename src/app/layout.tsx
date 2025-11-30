@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Inter, PT_Serif, Poppins, Orbitron } from "next/font/google";
 import "./globals.css";
+import Header from "../components/layout/Header";
+import { AuthProvider } from "../context/AuthContext";
+import { LoaderProvider } from "../context/LoaderContext";
+import { GlobalLoader } from "../components/GlobalLoader/GlobalLoader";
+import { Toaster } from "sonner";
 
 const interSans = Inter({
   variable: "--font-inter",
@@ -45,7 +50,17 @@ export default function RootLayout({
       lang="en"
       className={`${interSans.variable} ${ptSerif.variable} ${poppinsSans.variable} ${orbitronDisplay.variable}`}
     >
-      <body className={`min-h-dvh antialiased`}>{children}</body>
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <body className="min-h-screen flex flex-col antialiased">
+        <LoaderProvider>
+          <AuthProvider>
+            <Header />
+            <GlobalLoader />
+            <Toaster richColors position="bottom-right" />
+            <main className="flex flex-1">{children}</main>
+          </AuthProvider>
+        </LoaderProvider>
+      </body>
     </html>
   );
 }

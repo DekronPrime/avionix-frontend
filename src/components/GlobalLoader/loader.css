@@ -1,0 +1,58 @@
+:root {
+    --loader-outer-color: var(--light);
+    --loader-center-color: var(--background);
+    --loader-inner-color: var(--light);
+    --loader-bg: rgba(0, 0, 0, 0.5);
+    --loader-blur: blur(4px);
+}
+
+#preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    background: var(--loader-bg);
+    backdrop-filter: var(--loader-blur);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#loader {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    border-top-color: var(--loader-outer-color);
+    position: relative;
+    animation: spin 2s linear infinite;
+}
+
+#loader::before {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    border-top-color: var(--loader-center-color);
+    animation: spin 3s linear infinite;
+}
+
+#loader::after {
+    content: "";
+    position: absolute;
+    inset: 15px;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    border-top-color: var(--loader-inner-color);
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
