@@ -14,7 +14,7 @@ module.exports = {
         danger: "var(--danger)",
         warning: "var(--warning)",
         success: "var(--success)",
-        accent: "var(--accent)",
+        info: "var(--info)",
         dark: "var(--dark)",
         light: "var(--light)",
       },
