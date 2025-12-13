@@ -4,13 +4,12 @@
 
 :root {
   --background: #8CBCCA;
-  /* --foreground: #53A3FF; */
-  /* --foreground: #0e7490; */
   --foreground: #0E7490;
   --danger: #EF4444;
-  --warning: #F59E0B;
+  --warning: #DF971C;
   --success: #22C55E;
   --info: #1A73E8;
+  --limited: #AF0BF5;
   --dark: #2C3E50;
   --light: #F9FAFB;
 }
@@ -39,7 +38,7 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: var(--foreground);
+    background: var(--background);
     border-radius: 5px;
   }
 

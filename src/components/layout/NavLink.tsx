@@ -1,18 +1,21 @@
 "use client";
 
-import Link from "next/link";
-import Image, { StaticImageData } from "next/image";
-import { usePathname } from "next/navigation";
-import { FC } from "react";
 import { cn } from "@/src/utils/cn";
+import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-interface NavLinkProps {
+type NavLinkProps = {
   label: string;
   href: string;
   icon?: StaticImageData;
-}
+};
 
-export const NavLink: FC<NavLinkProps> = ({ label, href, icon }) => {
+export const NavLink: React.FC<NavLinkProps> = ({
+  label,
+  href,
+  icon,
+}: NavLinkProps) => {
   const pathname = usePathname();
   const isActive = pathname === href;
 

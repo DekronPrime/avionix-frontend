@@ -15,6 +15,7 @@ module.exports = {
         warning: "var(--warning)",
         success: "var(--success)",
         info: "var(--info)",
+        limited: "var(--limited)",
         dark: "var(--dark)",
         light: "var(--light)",
       },

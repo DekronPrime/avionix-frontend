@@ -6,10 +6,20 @@ import { useState } from "react";
 import EyeClosed from "@/public/icons/eye-closed-dark.png";
 import EyeOpen from "@/public/icons/eye-open-dark.png";
 import Tooltip from "@/public/icons/info-tooltip-dark.png";
-import { InputFieldType } from "@/src/types/inputField";
 import { cn } from "@/src/utils/cn";
+import { CheckState } from "@/src/types/checkState";
 
-export default function InputField({
+type InputFieldProps = {
+  id: string;
+  label: string;
+  required?: boolean;
+  tooltip?: string;
+  error?: string;
+  note?: string;
+  noteStatus?: CheckState;
+} & React.InputHTMLAttributes<HTMLInputElement>;
+
+const InputField: React.FC<InputFieldProps> = ({
   id,
   label,
   required,
@@ -20,7 +30,7 @@ export default function InputField({
   note,
   noteStatus = null,
   ...props
-}: InputFieldType) {
+}: InputFieldProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
   const isPassword = type === "password";
@@ -108,4 +118,6 @@ export default function InputField({
       )}
     </div>
   );
-}
+};
+
+export default InputField;
