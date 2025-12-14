@@ -62,7 +62,6 @@ export const AdminAirportsPage = () => {
         ...data,
         countryId: Number(data.countryId),
       };
-      console.log(payload);
 
       await airportsApi.create(payload);
 
@@ -85,6 +84,7 @@ export const AdminAirportsPage = () => {
         ...data,
         countryId: Number(data.countryId),
       };
+
       await airportsApi.update(modalState.item.id, payload);
 
       toast.success("Airport updated successfully");
@@ -217,6 +217,7 @@ export const AdminAirportsPage = () => {
       <div className="p-6 bg-foreground flex flex-col gap-4 flex-1 justify-start items-center">
         <AdminPanelTitle title="Airports Panel" icon={Airport} />
         <AdminToolbar
+          entityType="airport"
           onCreate={() => openCreate()}
           onSearch={handleSearch}
           searchPlaceholder="Search airport (name, iata, city, country)..."
@@ -283,10 +284,10 @@ export const AdminAirportsPage = () => {
               <div className="flex gap-2 mr-auto">
                 {modalState.item.status !== "ACTIVE" && (
                   <Button
-                    variant="submit"
+                    variant="modal"
                     size="sm"
                     onClick={() => handleStatusChange("ACTIVE")}
-                    className="text-lg py-2 px-3 capitalize hover:bg-success"
+                    className="text-lg py-2 px-3"
                   >
                     Set ACTIVE
                   </Button>
@@ -294,10 +295,10 @@ export const AdminAirportsPage = () => {
 
                 {modalState.item.status !== "INACTIVE" && (
                   <Button
-                    variant="submit"
+                    variant="modal"
                     size="sm"
                     onClick={() => handleStatusChange("INACTIVE")}
-                    className="text-lg py-2 px-3 capitalize hover:bg-danger"
+                    className="text-lg py-2 px-3"
                   >
                     Set INACTIVE
                   </Button>
@@ -305,10 +306,10 @@ export const AdminAirportsPage = () => {
 
                 {modalState.item.status !== "MAINTENANCE" && (
                   <Button
-                    variant="submit"
+                    variant="modal"
                     size="sm"
                     onClick={() => handleStatusChange("MAINTENANCE")}
-                    className="text-lg py-2 px-3 capitalize hover:bg-limited"
+                    className="text-lg py-2 px-3"
                   >
                     Set MAINTENANCE
                   </Button>
@@ -316,10 +317,10 @@ export const AdminAirportsPage = () => {
 
                 {modalState.item.status !== "CLOSED" && (
                   <Button
-                    variant="submit"
+                    variant="modal"
                     size="sm"
                     onClick={() => handleStatusChange("CLOSED")}
-                    className="text-lg py-2 px-3 capitalize hover:bg-black"
+                    className="text-lg py-2 px-3"
                   >
                     Set CLOSED
                   </Button>

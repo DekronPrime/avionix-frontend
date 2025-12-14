@@ -1,25 +1,25 @@
 import { useCountries } from "@/src/hooks/useCountries";
-import { cn } from "@/src/utils/cn";
-import { airportSchema } from "@/src/validation/airportSchema";
+import { airlineSchema } from "@/src/validation/airlineSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
-import { Badge } from "../common/Badge";
-import { DropdownField } from "../modal/DropDownField";
 import { TextField } from "../modal/TextInput";
+import { DropdownField } from "../modal/DropDownField";
+import { cn } from "@/src/utils/cn";
+import { Badge } from "../common/Badge";
 
-type AirportFormProps = {
+type AirlineFormProps = {
   type: "create" | "edit";
   item: any;
   onSubmit: (data: any) => void;
 };
 
-export const AirportForm: React.FC<AirportFormProps> = ({
+export const AirlineForm: React.FC<AirlineFormProps> = ({
   type,
   item,
   onSubmit,
-}: AirportFormProps) => {
+}: AirlineFormProps) => {
   const methods = useForm({
-    resolver: zodResolver(airportSchema),
+    resolver: zodResolver(airlineSchema),
     defaultValues: item,
     mode: "onChange",
   });
@@ -33,16 +33,26 @@ export const AirportForm: React.FC<AirportFormProps> = ({
   return (
     <FormProvider {...methods}>
       <form
-        id="airport-form"
+        id="airline-form"
         className="flex flex-col gap-4"
         onSubmit={methods.handleSubmit(submit)}
       >
         <div className="inline-flex w-full items-center gap-4">
           <TextField
             name="name"
-            label="Airport name"
+            label="Airline name"
             required
-            placeholder="Ternopil International Airport"
+            placeholder="Avionix Airlines"
+            className="w-full"
+          />
+        </div>
+
+        <div className="inline-flex w-full items-center gap-4">
+          <TextField
+            name="iataCode"
+            label="IATA Code"
+            required
+            placeholder="AX"
             className="w-full"
           />
           <DropdownField
@@ -86,23 +96,6 @@ export const AirportForm: React.FC<AirportFormProps> = ({
                 {opt?.label}
               </span>
             )}
-            className="w-full"
-          />
-        </div>
-
-        <div className="inline-flex w-full items-center gap-4">
-          <TextField
-            name="iataCode"
-            label="IATA Code"
-            required
-            placeholder="TRN"
-            className="w-full"
-          />
-          <TextField
-            name="city"
-            label="City"
-            required
-            placeholder="Ternopil"
             className="w-full"
           />
         </div>

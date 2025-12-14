@@ -7,6 +7,14 @@ import { Search } from "./Search";
 import AddItem from "@/public/icons/add-item-light.png";
 
 type AdminToolbarProps = {
+  entityType:
+    | "airport"
+    | "airline"
+    | "aircraft"
+    | "flight"
+    | "user"
+    | "booking"
+    | "dashboard";
   onCreate?: () => void;
   filters?: React.ReactNode;
   onSearch?: (value: string) => void;
@@ -14,6 +22,7 @@ type AdminToolbarProps = {
 };
 
 export const AdminToolbar: React.FC<AdminToolbarProps> = ({
+  entityType,
   onCreate,
   filters,
   onSearch,
@@ -30,7 +39,9 @@ export const AdminToolbar: React.FC<AdminToolbarProps> = ({
             variant="admin"
             size="adm"
           >
-            New Airport
+            {entityType === "dashboard"
+              ? "Admin Dashboard"
+              : `New ${entityType}`}
           </Button>
         </div>
 

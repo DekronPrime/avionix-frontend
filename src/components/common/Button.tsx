@@ -4,7 +4,7 @@ import React from "react";
 
 type ButtonType = {
   children: React.ReactNode;
-  variant?: "primary" | "secondary" | "submit" | "admin" | "cancel";
+  variant?: "primary" | "secondary" | "submit" | "admin" | "cancel" | "modal";
   size?: "sm" | "md" | "lg" | "adm";
   icon?: StaticImageData;
   iconSize?: number;
@@ -36,6 +36,8 @@ const Button: React.FC<ButtonType> = ({
       "bg-dark text-light hover:bg-black/70 font-semibold font-poppins w-[300px] gap-3 uppercase",
     cancel:
       "gap-3 bg-background text-black hover:bg-light font-semibold font-poppins capitalize",
+    modal:
+      "gap-3 bg-foreground border-2 border-transparent text-light hover:bg-dark hover:border-light font-semibold font-poppins capitalize",
   };
 
   const sizes: Record<typeof size, string> = {
