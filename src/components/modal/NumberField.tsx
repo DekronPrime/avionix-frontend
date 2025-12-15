@@ -27,18 +27,20 @@ export const NumberField: React.FC<NumberFieldProps> = ({
       </label>
 
       <input
-        {...register(name)}
+        {...register(name, { valueAsNumber: true })}
         type="number"
         placeholder={placeholder}
         {...rest}
         className="w-full text-[16px] font-ptSerif font-bold bg-light rounded-lg border-l-[3px] focus:border-dark border-foreground p-2.5 pl-3 text-black placeholder:text-black/50 focus:outline-none transition-all"
       />
 
-      {errors[name] && (
-        <p className="mt-1 text-xs font-semibold text-red-700">
-          {errors[name]?.message as string}
-        </p>
-      )}
+      <div className="min-h-[16px]">
+        {errors[name] && (
+          <p className="text-xs font-semibold font-inter text-left text-red-700">
+            {errors[name]?.message as string}
+          </p>
+        )}
+      </div>
     </div>
   );
 };
